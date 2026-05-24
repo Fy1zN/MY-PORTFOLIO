@@ -23,6 +23,8 @@ const navItems = [
 
   { name: "Publications", href: "#publications" },
 
+  { name: "Patents", href: "#patents" },
+
   { name: "Experience", href: "#experience" },
 
   { name: "Contact", href: "#contact" },
