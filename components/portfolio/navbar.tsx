@@ -1,28 +1,51 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+
+import {
+  motion,
+  AnimatePresence,
+} from "framer-motion";
+
+import {
+  Menu,
+  X,
+} from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 
 const navItems = [
   { name: "About", href: "#about" },
+
   { name: "Skills", href: "#skills" },
+
   { name: "Projects", href: "#projects" },
+
+  { name: "Publications", href: "#publications" },
+
   { name: "Experience", href: "#experience" },
+
   { name: "Contact", href: "#contact" },
 ];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const [isMobileMenuOpen, setIsMobileMenuOpen] =
+    useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () =>
+      window.removeEventListener(
+        "scroll",
+        handleScroll
+      );
   }, []);
 
   return (
@@ -38,6 +61,7 @@ export function Navbar() {
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+          {/* Logo */}
           <motion.a
             href="#"
             className="text-xl font-bold text-gradient"
@@ -60,11 +84,14 @@ export function Navbar() {
                 {item.name}
               </motion.a>
             ))}
+
             <Button
               asChild
               className="bg-gradient-primary text-primary-foreground hover:opacity-90"
             >
-              <a href="#contact">Get in Touch</a>
+              <a href="#contact">
+                Get in Touch
+              </a>
             </Button>
           </div>
 
@@ -73,7 +100,11 @@ export function Navbar() {
             variant="ghost"
             size="icon"
             className="md:hidden"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={() =>
+              setIsMobileMenuOpen(
+                !isMobileMenuOpen
+              )
+            }
           >
             {isMobileMenuOpen ? <X /> : <Menu />}
           </Button>
@@ -84,9 +115,18 @@ export function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            initial={{
+              opacity: 0,
+              y: -20,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            exit={{
+              opacity: 0,
+              y: -20,
+            }}
             className="fixed inset-x-0 top-16 z-40 glass border-b border-border/50 p-6 md:hidden"
           >
             <div className="flex flex-col gap-4">
@@ -95,16 +135,24 @@ export function Navbar() {
                   key={item.name}
                   href={item.href}
                   className="text-muted-foreground transition-colors hover:text-foreground"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() =>
+                    setIsMobileMenuOpen(false)
+                  }
                 >
                   {item.name}
                 </a>
               ))}
+
               <Button
                 asChild
-                className="bg-gradient-primary text-primary-foreground w-full"
+                className="w-full bg-gradient-primary text-primary-foreground"
               >
-                <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
+                <a
+                  href="#contact"
+                  onClick={() =>
+                    setIsMobileMenuOpen(false)
+                  }
+                >
                   Get in Touch
                 </a>
               </Button>
