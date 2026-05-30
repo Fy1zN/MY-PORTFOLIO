@@ -11,9 +11,55 @@ import {
   SiFlask,
   SiPytorch,
   SiScikitlearn,
+  SiFastapi,
+  SiNextdotjs,
+  SiTypescript,
+  SiPostgresql,
+  SiN8N,
+  SiGooglegemini,
+  SiGmail,
+  SiJavascript,
 } from "react-icons/si";
 
 const projects = [
+  {
+    title: "SentinelX",
+    subtitle: "Real-Time Cyber Threat Intelligence & SOC Platform",
+    description:
+      "Full-stack SOC platform for real-time cyber threat intelligence, aggregating IOC analysis from VirusTotal, AlienVault OTX, AbuseIPDB, and more into a unified security operations environment.",
+    longDescription:
+      "SentinelX is a full-stack, real-time Cyber Threat Intelligence (CTI) and Security Operations Center (SOC) platform that enables security analysts to analyze Indicators of Compromise (IOCs) such as IPs, domains, URLs, and file hashes. It aggregates intelligence from VirusTotal, AlienVault OTX, MalwareBazaar, URLHaus, AbuseIPDB, and NVD, computes risk scores, and presents consolidated results through an intuitive dashboard. Features a Threat Correlation Engine with MITRE ATT&CK mapping, Watchlist Management System, real-time WebSocket infrastructure for live SOC feeds, and an automated PDF Intelligence Reporting System for professional investigation reports.",
+    tech: ["FastAPI", "Next.js", "TypeScript", "PostgreSQL", "WebSockets", "JWT"],
+    features: [
+      "Multi-source IOC threat intelligence aggregation",
+      "MITRE ATT&CK framework mapping",
+      "Real-time WebSocket SOC activity feeds",
+      "Automated PDF intelligence report generation",
+      "Watchlist management for priority IOCs",
+      "Interactive analytics & threat dashboards",
+    ],
+    github: "https://github.com/krishmalhotra/sentinelx",
+    gradient: "from-red-500 to-orange-500",
+  },
+  {
+    title: "AI Email Assistant Agent",
+    subtitle: "Intelligent Workflow Automation with n8n & Gemini",
+    description:
+      "AI-powered email automation system using n8n and Google Gemini to monitor Gmail, classify emails, generate personalized draft replies, and track interactions in Google Sheets.",
+    longDescription:
+      "An intelligent workflow automation system built using n8n, Google Gemini AI, Gmail API, and Google Sheets API. Automatically monitors incoming Gmail messages, analyzes content using Gemini 2.5 Flash, categorizes emails (internship opportunities, interview invitations, recruiter outreach, networking, job alerts), assigns priority levels, generates context-aware draft responses, and maintains a structured tracking database. Includes duplicate detection via Message ID checking, OAuth2-secured API integrations, and a JavaScript processing layer for structured JSON output.",
+    tech: ["n8n", "Google Gemini", "Gmail API", "Google Sheets API", "JavaScript", "OAuth2"],
+    features: [
+      "Automated Gmail monitoring & classification",
+      "AI-powered personalized draft reply generation",
+      "Priority detection & reply requirement analysis",
+      "Duplicate email detection via Message IDs",
+      "Google Sheets tracking dashboard",
+      "OAuth2-secured end-to-end automation",
+    ],
+    github: "https://github.com/krishmalhotra/ai-email-agent",
+    gradient: "from-blue-500 to-cyan-500",
+  },
   {
     title: "TransferIQ",
     subtitle: "AI Football Valuation Platform",
@@ -90,6 +136,14 @@ const techIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   Flask: SiFlask,
   PyTorch: SiPytorch,
   "Scikit-learn": SiScikitlearn,
+  FastAPI: SiFastapi,
+  "Next.js": SiNextdotjs,
+  TypeScript: SiTypescript,
+  PostgreSQL: SiPostgresql,
+  n8n: SiN8N,
+  "Google Gemini": SiGooglegemini,
+  "Gmail API": SiGmail,
+  JavaScript: SiJavascript,
 };
 
 interface Project {
@@ -123,7 +177,7 @@ function ProjectCard({
     >
       {/* Gradient border effect */}
       <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 transition-opacity group-hover:opacity-10`} />
-      
+
       {/* Content */}
       <div className="relative p-6">
         {/* Header */}
@@ -205,14 +259,14 @@ function ProjectModal({
     >
       {/* Backdrop */}
       <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
-      
+
       {/* Modal */}
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-2xl overflow-hidden rounded-2xl border border-border/50 bg-card p-6 shadow-2xl md:p-8"
+        className="relative w-full max-w-2xl overflow-hidden rounded-2xl border border-border/50 bg-card p-6 shadow-2xl md:p-8 max-h-[90vh] overflow-y-auto"
       >
         {/* Close button */}
         <Button
